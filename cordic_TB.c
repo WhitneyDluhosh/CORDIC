@@ -14,7 +14,7 @@ int main( void) {
   printf( "y_d = %f\t\t\ty_i = %i\n", y_d, y_i);
   printf( "z_d = %f\t\t\tz_i = %i\n", z_d, z_i);
   printf( "\n");
-  for( i=0; i<15; i++) {
+  for( int i=0; i<15; i++) {
     printf( "z[%2i] = %i\n", i,
     (int)(atan( pow( 2.0, (double)(-i))) * (1 << 15)));
   }
