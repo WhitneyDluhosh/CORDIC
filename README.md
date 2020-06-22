@@ -5,7 +5,7 @@ CORDIC (coordinate rotation digital computer) is a hardware-efficient iterative 
 
 **1.** Build the testbench: Student is given a range of values for the argument M This range should be wider than the ideal range considered in the theoretical derivations, such that a pre-normalization will be needed (for example, calculate log2 M for 0.3 ≤ M < 1.7) Consider at least 20 random values in this range and calculate their function values in double-precision floating-point arithmetic using a common mathematical tool (for example, Matlab) 
 
-**2.** Implement the CCM algorithm in software using fixed-point arithmetic Student is given the word length of the implementation Write C routines and debug them by comparing the results obtained in fixed-point arithmetic with those obtained previously in double-precision floating-point arithmetic (cast operations are needed) 
+**2.** Implement the CORDIC algorithm in software using fixed-point arithmetic Student is given the word length of the implementation Write C routines and debug them by comparing the results obtained in fixed-point arithmetic with those obtained previously in double-precision floating-point arithmetic (cast operations are needed) 
 
 **3.** Determine the bottleneck of the all-software implementation Determine the instruction count of the software solution Determine which part of the code takes longest to execute Explore the options to implement the bottleneck into firmware / hardware 
 
