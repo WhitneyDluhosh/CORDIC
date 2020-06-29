@@ -16,7 +16,7 @@ ORIGINAL VALUE, y_temp_1 =  24903
 12: SECOND spot, y_temp_1 = -2 
 13: FIRST spot, y_temp_1 = 13 
 14: FIRST spot, y_temp_1 = 6 
-x_i_init = 27852	x_d_init = 0.849976
+x_i_init = 17852	x_d_init = 0.849976
 y_i_init = 24903	y_d_init = 0.759979
 z_i_init = 23906	z_d_init = 0.729553 (rad)
 
@@ -26,3 +26,6 @@ z_i_calc = 23901	z_d_calc = 0.729401 (rad)
 
 Modulus = SQRT(x_d_init^2 + y_d_init^2) = 1.140187
 
+
+if we change the x or y value for _i_init the order changes
+if we change the series of 15 numbers z table order does NOT change 
