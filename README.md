@@ -2,17 +2,17 @@
 SENG440-Project
 CORDIC (coordinate rotation digital computer) is a hardware-efficient iterative method which uses rotations to calculate a wide range of elementary functions.
 # COMPILE AND EXECUTE COMMANDS
-
-gcc cordic_TB.c -o cordic_TB.exe -lm
-./cordic_TB.exe
-
-for any of -O3 -O2 -O1:
-arm-linux-gcc -O3 -S cordic_V_fixed_point.c
-arm-linux-gcc -O3 -S HW_cordic_V_fixed_point.c
-
-gcc cordic_main.c -o cordic_main.exe
-./cordic_main.exe
-
+  
+gcc cordic_TB.c -o cordic_TB.exe -lm  
+./cordic_TB.exe  
+  
+for any of -O3 -O2 -O1:  
+arm-linux-gcc -O3 -S cordic_V_fixed_point.c  
+arm-linux-gcc -O3 -S HW_cordic_V_fixed_point.c  
+  
+gcc cordic_main.c -o cordic_main.exe  
+./cordic_main.exe  
+  
 # OUR OBJECTIVES
 
 **1.** Build the testbench: Student is given a range of values for the argument M This range should be wider than the ideal range considered in the theoretical derivations, such that a pre-normalization will be needed (for example, calculate log2 M for 0.3 ≤ M < 1.7) Consider at least 20 random values in this range and calculate their function values in double-precision floating-point arithmetic using a common mathematical tool (for example, Matlab) 
