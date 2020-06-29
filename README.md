@@ -10,7 +10,7 @@ for any of -O3 -O2 -O1:
 arm-linux-gnueabi-gcc -O3 -S cordic_V_fixed_point.c  
 arm-linux-gnueabi-gcc -O3 -S HW_cordic_V_fixed_point.c  
   
-gcc cordic_main.c -o cordic_main.exe -lm
+gcc cordic_main.c -o cordic_main.exe -lm  
 ./cordic_main.exe  
   
 # OUR OBJECTIVES
