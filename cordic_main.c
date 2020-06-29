@@ -9,10 +9,10 @@ void verify( int x_i_init, int y_i_init, int z_i_init, int x_i, int y_i, int z_i
   double x_d_init, y_d_init, z_d_init, x_d, y_d, z_d;
   x_d_init = (double)x_i_init / ( 1 << 15); /* float image of x_i_init */
   y_d_init = (double)y_i_init / ( 1 << 15); /* float image of y_i_init */
-  z_d_init = (double)z_i_init / ( 1 << 15); /* float image of z */
-  x_d = (double)x_i / ( 1 << 15); /* float image of x_i_init */
-  y_d = (double)y_i / ( 1 << 15); /* float image of y_i_init */
-  z_d = (double)z_i / ( 1 << 15); /* float image of z */
+  z_d_init = (double)z_i_init / ( 1 << 15); /* float image of z_i_init */
+  x_d = (double)x_i / ( 1 << 15); /* float image of x_i*/
+  y_d = (double)y_i / ( 1 << 15); /* float image of y_i*/
+  z_d = (double)z_i / ( 1 << 15); /* float image of z_i*/
   printf( "x_i_init = %5i\tx_d_init = %f\n", x_i_init, x_d_init);
   printf( "y_i_init = %5i\ty_d_init = %f\n", y_i_init, y_d_init);
   printf( "z_i_init = %5i\tz_d_init = %f (rad)\n\n", z_i_init, z_d_init);
