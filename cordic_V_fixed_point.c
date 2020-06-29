@@ -1,3 +1,4 @@
+#include <stdio.h>
 int z_table[15];
 
 void cordic_V_fixed_point( int *x, int *y, int *z) {
@@ -7,13 +8,16 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   x_temp_1 = *x;
   y_temp_1 = *y;
   z_temp = 0;
+   printf("ORIGINAL VALUE, y_temp_1 =  %d \n",y_temp_1);
   for( i=0; i<15; i++) { /* 15 iterations are needed */
     if( y_temp_1 > 0) {
+      printf("%d: FIRST spot, y_temp_1 = %d \n",i,y_temp_1);
       x_temp_2 = x_temp_1 + (y_temp_1 >> i);
       y_temp_2 = y_temp_1 - (x_temp_1 >> i);
       z_temp += z_table[i];
     }
     else {
+      printf("%d: SECOND spot, y_temp_1 = %d \n",i, y_temp_1);
       x_temp_2 = x_temp_1 - (y_temp_1 >> i);
       y_temp_2 = y_temp_1 + (x_temp_1 >> i);
       z_temp -= z_table[i];

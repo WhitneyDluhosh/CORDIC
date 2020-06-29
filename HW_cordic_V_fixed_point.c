@@ -11,6 +11,6 @@ void HW_cordic_V_fixed_point( int *x, int *y, int *z) {
    );
   
   *x = xz_temp >> 16;
-  z_temp = (xz_temp << 16) >> 16; /* what is this ?! */
+  z_temp = (xz_temp << 16) >> 16; /* bit shift */
   *z = z_temp;
 }
