@@ -2,9 +2,9 @@
 int z_table[15];
 
 void cordic_V_fixed_point( int *x, int *y, int *z) {
-  int x_temp_1, y_temp_1, z_temp;
-  int x_temp_2, y_temp_2;
-  int i;
+register  int x_temp_1, y_temp_1, z_temp;
+register  int x_temp_2, y_temp_2;
+//  int i;
   x_temp_1 = *x;
   y_temp_1 = *y;
   z_temp = 0;
