@@ -1,0 +1,11 @@
+Vectoring CORDIC:
+
+x_i_init = 27852	x_d_init = 0.849976
+y_i_init = 24903	y_d_init = 0.759979
+z_i_init = 23906	z_d_init = 0.729553 (rad)
+
+x_i_calc = 61526	x_d_calc = 1.877625
+y_i_calc =     3	y_d_calc = 0.000092
+z_i_calc = 23901	z_d_calc = 0.729401 (rad)
+
+Modulus = SQRT(x_d_init^2 + y_d_init^2) = 1.140187
