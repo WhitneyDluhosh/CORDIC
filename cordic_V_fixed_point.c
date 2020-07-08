@@ -1,5 +1,5 @@
 #include <stdio.h>
-int z_t;
+int z_table[15];
 
 void cordic_V_fixed_point( int *x, int *y, int *z) {
   register  int x_temp_1, y_temp_1, z_temp, z_t;
