@@ -40,6 +40,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #1
 	ldr	r5, [ip, #4]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -53,6 +54,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #2
 	ldr	r5, [ip, #8]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -66,6 +68,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #3
 	ldr	r5, [ip, #12]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -79,6 +82,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #4
 	ldr	r5, [ip, #16]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -92,6 +96,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #5
 	ldr	r5, [ip, #20]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -105,6 +110,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #6
 	ldr	r5, [ip, #24]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -118,6 +124,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #7
 	ldr	r5, [ip, #28]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -131,6 +138,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #8
 	ldr	r5, [ip, #32]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -144,6 +152,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #9
 	ldr	r5, [ip, #36]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -157,6 +166,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #10
 	ldr	r5, [ip, #40]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -170,6 +180,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #11
 	ldr	r5, [ip, #44]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -183,6 +194,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #12
 	ldr	r5, [ip, #48]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -196,6 +208,7 @@ cordic_V_fixed_point:
 	vmov.32	lr, d16[1]
 	vshl.i32	d17, d16, #13
 	ldr	r5, [ip, #52]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	lr, #0
@@ -209,6 +222,7 @@ cordic_V_fixed_point:
 	ldr	r4, [ip, #56]
 	vshl.i32	d17, d16, #14
 	vmov.32	ip, d16[1]
+	vrev64.32	d17, d17
 	vadd.i32	d18, d17, d16
 	vsub.i32	d17, d16, d17
 	cmp	ip, #0
