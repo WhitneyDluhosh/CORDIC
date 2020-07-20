@@ -20,7 +20,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   z_temp = 0;
   z_t = z_table[0];
    __asm__ __volatile__ ( 
-    "SAXNE %0, %1, %2"
+    "USAX %0, %1, %2"
     : "=r" (XY)
     : "r" (XY), "r" (shift_XY)
    );

@@ -43,7 +43,7 @@ cordic_V_fixed_point:
 	vmov	r0, r1, d16  @ v2si
 	.syntax divided
 @ 22 "cordic_V_fixed_point.c" 1
-	SAXNE r2, r2, r0
+	USAX r2, r2, r0
 @ 0 "" 2
 	.arm
 	.syntax unified
