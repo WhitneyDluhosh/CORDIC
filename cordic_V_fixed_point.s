@@ -35,20 +35,18 @@ cordic_V_fixed_point:
 	sub	sp, sp, #20
 	vmov.32	d8[1], r6
 	str	r2, [sp, #8]
-	vshl.i32	d9, d8, #0
-	vmov.32	r2, d8[0]
+	vmov.32	r5, d8[0]
+	vrev64.32	d9, d8
+	mov	r2, r5
 	bl	__printf_chk
+	mov	r2, r5
+	mov	r3, r6
 	movw	r1, #:lower16:.LC1
 	mov	r0, #1
 	movt	r1, #:upper16:.LC1
-	vmov.32	r9, d9[0]
-	vmov.32	r5, d9[1]
-	vrev64.32	d9, d9
-	mov	r2, r9
-	mov	r3, r5
 	bl	__printf_chk
-	mov	r3, r9
-	mov	r2, r5
+	mov	r3, r5
+	mov	r2, r6
 	movw	r1, #:lower16:.LC2
 	mov	r0, #1
 	movt	r1, #:upper16:.LC2
@@ -83,7 +81,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r5
 .L3:
 	vmov.32	r6, d8[1]
-	vshl.i32	d9, d8, #1
+	vshr.s32	d9, d8, #1
 	vmov.32	r2, d8[0]
 	movw	r1, #:lower16:.LC6
 	mov	r0, #1
@@ -116,7 +114,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L5:
 	vmov.32	r6, d8[1]
-	vshl.i32	d9, d8, #2
+	vshr.s32	d9, d8, #2
 	vmov.32	r2, d8[0]
 	movw	r1, #:lower16:.LC9
 	mov	r0, #1
@@ -149,7 +147,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L7:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #3
+	vshr.s32	d16, d8, #3
 	movw	r1, #:lower16:.LC12
 	mov	r0, #1
 	movt	r1, #:upper16:.LC12
@@ -168,7 +166,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L9:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #4
+	vshr.s32	d16, d8, #4
 	movw	r1, #:lower16:.LC13
 	mov	r0, #1
 	movt	r1, #:upper16:.LC13
@@ -187,7 +185,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L11:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #5
+	vshr.s32	d16, d8, #5
 	movw	r1, #:lower16:.LC14
 	mov	r0, #1
 	movt	r1, #:upper16:.LC14
@@ -206,7 +204,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L13:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #6
+	vshr.s32	d16, d8, #6
 	movw	r1, #:lower16:.LC15
 	mov	r0, #1
 	movt	r1, #:upper16:.LC15
@@ -225,7 +223,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L15:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #7
+	vshr.s32	d16, d8, #7
 	movw	r1, #:lower16:.LC16
 	mov	r0, #1
 	movt	r1, #:upper16:.LC16
@@ -244,7 +242,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L17:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #8
+	vshr.s32	d16, d8, #8
 	movw	r1, #:lower16:.LC17
 	mov	r0, #1
 	movt	r1, #:upper16:.LC17
@@ -263,7 +261,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L19:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #9
+	vshr.s32	d16, d8, #9
 	movw	r1, #:lower16:.LC18
 	mov	r0, #1
 	movt	r1, #:upper16:.LC18
@@ -282,7 +280,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L21:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #10
+	vshr.s32	d16, d8, #10
 	movw	r1, #:lower16:.LC19
 	mov	r0, #1
 	movt	r1, #:upper16:.LC19
@@ -301,7 +299,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L23:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #11
+	vshr.s32	d16, d8, #11
 	movw	r1, #:lower16:.LC20
 	mov	r0, #1
 	movt	r1, #:upper16:.LC20
@@ -320,7 +318,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L25:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #12
+	vshr.s32	d16, d8, #12
 	movw	r1, #:lower16:.LC21
 	mov	r0, #1
 	movt	r1, #:upper16:.LC21
@@ -339,7 +337,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L27:
 	vmov.32	r6, d8[1]
-	vshl.i32	d16, d8, #13
+	vshr.s32	d16, d8, #13
 	movw	r1, #:lower16:.LC22
 	mov	r0, #1
 	movt	r1, #:upper16:.LC22
@@ -358,7 +356,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 .L29:
 	vmov.32	r3, d8[1]
-	vshl.i32	d16, d8, #14
+	vshr.s32	d16, d8, #14
 	movw	r1, #:lower16:.LC23
 	mov	r0, #1
 	movt	r1, #:upper16:.LC23
