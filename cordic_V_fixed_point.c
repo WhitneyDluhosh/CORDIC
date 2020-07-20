@@ -26,9 +26,8 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   (XY[1] > 0 )? (XY[0] = addXY[0], XY[1] = subXY[1] , z_temp+= z_t) : (XY[0] = subXY[0],  XY[1] = addXY[1], z_temp -= z_t);
   printf("1 XY STARTING position 0: %d  1: %d\n", XY[0], XY[1] );
   shift_XY = vshl_n_s32(XY, 1);
-  printf("1 SHIFT_XY STARTING position 0: %d  1: %d\n", shift_XY[0], shift_XY[1] );
+  printf("1 SHIFT_XY STARTING position 0: %d  1: %d\n  y_temp_1: %d", shift_XY[0], shift_XY[1],  XY[1] >> 1 );
   shift_XY = vrev64_s32(shift_XY);
-  printf("1 REVERSED SHIFT_XY STARTING position 0: %d  1: %d\n", shift_XY[0], shift_XY[1] );
   addXY = vadd_s32(XY, shift_XY); 
   subXY = vsub_s32(XY, shift_XY);
 
@@ -37,9 +36,8 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   (XY[1] > 0 )? (XY[0] = addXY[0], XY[1] = subXY[1] , z_temp+= z_t) : (XY[0] = subXY[0],  XY[1] = addXY[1], z_temp -= z_t);
   printf("2 XY STARTING position 0: %d  1: %d\n", XY[0], XY[1] );
   shift_XY = vshl_n_s32(XY, 2);
-  printf("2 SHIFT_XY STARTING position 0: %d  1: %d\n", shift_XY[0], shift_XY[1] );
+  printf("2 SHIFT_XY STARTING position 0: %d  1: %d\n y_temp_1: %d", shift_XY[0], shift_XY[1], XY[1] >> 2 );
   shift_XY = vrev64_s32(shift_XY);
-  printf("2 REVERSED SHIFT_XY STARTING position 0: %d  1: %d\n", shift_XY[0], shift_XY[1] );
   addXY = vadd_s32(XY, shift_XY); 
   subXY = vsub_s32(XY, shift_XY);
 

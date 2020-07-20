@@ -32,9 +32,9 @@ cordic_V_fixed_point:
 	movt	r4, #:upper16:z_table
 	vld1.32	{d8[]}, [r0]
 	mov	r0, #1
-	sub	sp, sp, #12
+	sub	sp, sp, #20
 	vmov.32	d8[1], r6
-	str	r2, [sp]
+	str	r2, [sp, #8]
 	vshl.i32	d9, d8, #0
 	vmov.32	r2, d8[0]
 	bl	__printf_chk
@@ -69,7 +69,7 @@ cordic_V_fixed_point:
 	movw	r1, #:lower16:.LC4
 	mov	r0, #1
 	movt	r1, #:upper16:.LC4
-	str	r2, [sp, #4]
+	str	r2, [sp, #12]
 	bl	__printf_chk
 	mov	r2, r6
 	movw	r1, #:lower16:.LC5
@@ -82,38 +82,32 @@ cordic_V_fixed_point:
 	vmov.32	d8[0], r10
 	vmov.32	d8[1], r5
 .L3:
-	vshl.i32	d16, d8, #1
 	vmov.32	r6, d8[1]
+	vshl.i32	d9, d8, #1
 	vmov.32	r2, d8[0]
 	movw	r1, #:lower16:.LC6
 	mov	r0, #1
 	movt	r1, #:upper16:.LC6
-	vmov.32	r5, d16[1]
-	vmov.32	r10, d16[0]
-	vrev64.32	d16, d16
-	vadd.i32	d10, d16, d8
-	vsub.i32	d9, d8, d16
 	mov	r3, r6
 	bl	__printf_chk
+	vmov.32	r3, d9[1]
+	asr	r2, r6, #1
 	movw	r1, #:lower16:.LC7
-	mov	r0, #1
+	str	r2, [sp]
 	movt	r1, #:upper16:.LC7
-	mov	r3, r5
-	mov	r2, r10
+	vmov.32	r2, d9[0]
+	mov	r0, #1
 	bl	__printf_chk
-	mov	r2, r5
-	mov	r3, r10
+	mov	r2, r6
 	movw	r1, #:lower16:.LC8
 	mov	r0, #1
 	movt	r1, #:upper16:.LC8
-	bl	__printf_chk
-	mov	r2, r6
-	movw	r1, #:lower16:.LC9
-	mov	r0, #1
-	movt	r1, #:upper16:.LC9
+	vrev64.32	d9, d9
 	ldr	r5, [r4, #4]
 	bl	__printf_chk
 	cmp	r6, #0
+	vadd.i32	d10, d9, d8
+	vsub.i32	d9, d8, d9
 	ble	.L4
 	vmov.32	r2, d10[0]
 	add	r9, r9, r5
@@ -121,51 +115,45 @@ cordic_V_fixed_point:
 	vmov.32	d8[0], r2
 	vmov.32	d8[1], r3
 .L5:
-	vshl.i32	d16, d8, #2
 	vmov.32	r6, d8[1]
+	vshl.i32	d9, d8, #2
 	vmov.32	r2, d8[0]
-	movw	r1, #:lower16:.LC10
+	movw	r1, #:lower16:.LC9
 	mov	r0, #1
-	movt	r1, #:upper16:.LC10
-	vmov.32	r5, d16[1]
-	vmov.32	r10, d16[0]
-	vrev64.32	d16, d16
-	vadd.i32	d10, d16, d8
-	vsub.i32	d9, d8, d16
+	movt	r1, #:upper16:.LC9
 	mov	r3, r6
 	bl	__printf_chk
+	vmov.32	r3, d9[1]
+	asr	r2, r6, #2
+	movw	r1, #:lower16:.LC10
+	str	r2, [sp]
+	movt	r1, #:upper16:.LC10
+	vmov.32	r2, d9[0]
+	mov	r0, #1
+	bl	__printf_chk
+	mov	r2, r6
 	movw	r1, #:lower16:.LC11
 	mov	r0, #1
 	movt	r1, #:upper16:.LC11
-	mov	r3, r5
-	mov	r2, r10
-	bl	__printf_chk
-	mov	r2, r5
-	mov	r3, r10
-	movw	r1, #:lower16:.LC12
-	mov	r0, #1
-	movt	r1, #:upper16:.LC12
-	bl	__printf_chk
-	mov	r2, r6
-	movw	r1, #:lower16:.LC13
-	mov	r0, #1
-	movt	r1, #:upper16:.LC13
+	vrev64.32	d9, d9
 	ldr	r5, [r4, #8]
 	bl	__printf_chk
 	cmp	r6, #0
+	vadd.i32	d10, d9, d8
+	vsub.i32	d9, d8, d9
 	ble	.L6
 	vmov.32	r2, d10[0]
-	add	r5, r9, r5
+	add	r9, r9, r5
 	vmov.32	r3, d9[1]
 	vmov.32	d8[0], r2
 	vmov.32	d8[1], r3
 .L7:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #3
-	movw	r1, #:lower16:.LC14
+	movw	r1, #:lower16:.LC12
 	mov	r0, #1
-	movt	r1, #:upper16:.LC14
-	ldr	r9, [r4, #12]
+	movt	r1, #:upper16:.LC12
+	ldr	r5, [r4, #12]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
 	vsub.i32	d9, d8, d16
@@ -174,16 +162,16 @@ cordic_V_fixed_point:
 	cmp	r6, #0
 	ble	.L8
 	vmov.32	r2, d10[0]
-	add	r5, r5, r9
+	add	r5, r9, r5
 	vmov.32	r3, d9[1]
 	vmov.32	d8[0], r2
 	vmov.32	d8[1], r3
 .L9:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #4
-	movw	r1, #:lower16:.LC15
+	movw	r1, #:lower16:.LC13
 	mov	r0, #1
-	movt	r1, #:upper16:.LC15
+	movt	r1, #:upper16:.LC13
 	ldr	r9, [r4, #16]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -200,9 +188,9 @@ cordic_V_fixed_point:
 .L11:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #5
-	movw	r1, #:lower16:.LC16
+	movw	r1, #:lower16:.LC14
 	mov	r0, #1
-	movt	r1, #:upper16:.LC16
+	movt	r1, #:upper16:.LC14
 	ldr	r9, [r4, #20]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -219,9 +207,9 @@ cordic_V_fixed_point:
 .L13:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #6
-	movw	r1, #:lower16:.LC17
+	movw	r1, #:lower16:.LC15
 	mov	r0, #1
-	movt	r1, #:upper16:.LC17
+	movt	r1, #:upper16:.LC15
 	ldr	r9, [r4, #24]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -238,9 +226,9 @@ cordic_V_fixed_point:
 .L15:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #7
-	movw	r1, #:lower16:.LC18
+	movw	r1, #:lower16:.LC16
 	mov	r0, #1
-	movt	r1, #:upper16:.LC18
+	movt	r1, #:upper16:.LC16
 	ldr	r9, [r4, #28]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -257,9 +245,9 @@ cordic_V_fixed_point:
 .L17:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #8
-	movw	r1, #:lower16:.LC19
+	movw	r1, #:lower16:.LC17
 	mov	r0, #1
-	movt	r1, #:upper16:.LC19
+	movt	r1, #:upper16:.LC17
 	ldr	r9, [r4, #32]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -276,9 +264,9 @@ cordic_V_fixed_point:
 .L19:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #9
-	movw	r1, #:lower16:.LC20
+	movw	r1, #:lower16:.LC18
 	mov	r0, #1
-	movt	r1, #:upper16:.LC20
+	movt	r1, #:upper16:.LC18
 	ldr	r9, [r4, #36]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -295,9 +283,9 @@ cordic_V_fixed_point:
 .L21:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #10
-	movw	r1, #:lower16:.LC21
+	movw	r1, #:lower16:.LC19
 	mov	r0, #1
-	movt	r1, #:upper16:.LC21
+	movt	r1, #:upper16:.LC19
 	ldr	r9, [r4, #40]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -314,9 +302,9 @@ cordic_V_fixed_point:
 .L23:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #11
-	movw	r1, #:lower16:.LC22
+	movw	r1, #:lower16:.LC20
 	mov	r0, #1
-	movt	r1, #:upper16:.LC22
+	movt	r1, #:upper16:.LC20
 	ldr	r9, [r4, #44]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -333,9 +321,9 @@ cordic_V_fixed_point:
 .L25:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #12
-	movw	r1, #:lower16:.LC23
+	movw	r1, #:lower16:.LC21
 	mov	r0, #1
-	movt	r1, #:upper16:.LC23
+	movt	r1, #:upper16:.LC21
 	ldr	r9, [r4, #48]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -352,9 +340,9 @@ cordic_V_fixed_point:
 .L27:
 	vmov.32	r6, d8[1]
 	vshl.i32	d16, d8, #13
-	movw	r1, #:lower16:.LC24
+	movw	r1, #:lower16:.LC22
 	mov	r0, #1
-	movt	r1, #:upper16:.LC24
+	movt	r1, #:upper16:.LC22
 	ldr	r9, [r4, #52]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -371,9 +359,9 @@ cordic_V_fixed_point:
 .L29:
 	vmov.32	r3, d8[1]
 	vshl.i32	d16, d8, #14
-	movw	r1, #:lower16:.LC25
+	movw	r1, #:lower16:.LC23
 	mov	r0, #1
-	movt	r1, #:upper16:.LC25
+	movt	r1, #:upper16:.LC23
 	ldr	r6, [r4, #56]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -389,11 +377,11 @@ cordic_V_fixed_point:
 	vmov.32	d8[0], r2
 	vmov.32	d8[1], r3
 .L31:
-	ldr	r3, [sp]
+	ldr	r3, [sp, #8]
 	vst1.32	{d8[0]}, [r8]
 	vst1.32	{d8[1]}, [r7]
 	str	r5, [r3]
-	add	sp, sp, #12
+	add	sp, sp, #20
 	@ sp needed
 	vldm	sp!, {d8-d10}
 	pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
@@ -476,14 +464,14 @@ cordic_V_fixed_point:
 	b	.L11
 .L8:
 	vmov.32	r3, d9[0]
-	sub	r5, r5, r9
+	sub	r5, r9, r5
 	vmov.32	r2, d10[1]
 	vmov.32	d8[0], r3
 	vmov.32	d8[1], r2
 	b	.L9
 .L6:
 	vmov.32	r3, d9[0]
-	sub	r5, r9, r5
+	sub	r9, r9, r5
 	vmov.32	r2, d10[1]
 	vmov.32	d8[0], r3
 	vmov.32	d8[1], r2
@@ -496,7 +484,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r2
 	b	.L5
 .L2:
-	add	r3, sp, #4
+	add	r3, sp, #12
 	rsb	r9, r9, #0
 	vld1.32	{d8[0]}, [r3]
 	vmov.32	d8[1], fp
@@ -528,56 +516,51 @@ cordic_V_fixed_point:
 	.ascii	"1 XY STARTING position 0: %d  1: %d\012\000"
 	.space	3
 .LC7:
-	.ascii	"1 SHIFT_XY STARTING position 0: %d  1: %d\012\000"
-	.space	1
+	.ascii	"1 SHIFT_XY STARTING position 0: %d  1: %d\012  y_te"
+	.ascii	"mp_1: %d\000"
+	.space	3
 .LC8:
-	.ascii	"1 REVERSED SHIFT_XY STARTING position 0: %d  1: %d\012"
-	.ascii	"\000"
-.LC9:
 	.ascii	"1:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC10:
+.LC9:
 	.ascii	"2 XY STARTING position 0: %d  1: %d\012\000"
 	.space	3
+.LC10:
+	.ascii	"2 SHIFT_XY STARTING position 0: %d  1: %d\012 y_tem"
+	.ascii	"p_1: %d\000"
 .LC11:
-	.ascii	"2 SHIFT_XY STARTING position 0: %d  1: %d\012\000"
-	.space	1
-.LC12:
-	.ascii	"2 REVERSED SHIFT_XY STARTING position 0: %d  1: %d\012"
-	.ascii	"\000"
-.LC13:
 	.ascii	"2:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC14:
+.LC12:
 	.ascii	"3:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC15:
+.LC13:
 	.ascii	"4:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC16:
+.LC14:
 	.ascii	"5:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC17:
+.LC15:
 	.ascii	"6:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC18:
+.LC16:
 	.ascii	"7:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC19:
+.LC17:
 	.ascii	"8:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC20:
+.LC18:
 	.ascii	"9:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
-.LC21:
+.LC19:
 	.ascii	"10:  FIRST spot, y_temp_1 = %d\012\000"
-.LC22:
+.LC20:
 	.ascii	"11:  FIRST spot, y_temp_1 = %d\012\000"
-.LC23:
+.LC21:
 	.ascii	"12:  FIRST spot, y_temp_1 = %d\012\000"
-.LC24:
+.LC22:
 	.ascii	"13:  FIRST spot, y_temp_1 = %d\012\000"
-.LC25:
+.LC23:
 	.ascii	"14:  FIRST spot, y_temp_1 = %d\012\000"
 	.ident	"GCC: (Ubuntu/Linaro 7.5.0-3ubuntu1~18.04) 7.5.0"
 	.section	.note.GNU-stack,"",%progbits
