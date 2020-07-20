@@ -59,17 +59,17 @@ cordic_V_fixed_point:
 	mov	r0, #1
 	movt	r1, #:upper16:.LC3
 	vmov.32	r10, d16[0]
-	vmov.32	r3, d16[1]
-	vmov.32	fp, d9[0]
+	vmov.32	fp, d16[1]
 	vmov.32	r5, d9[1]
 	mov	r2, r10
-	str	r3, [sp, #4]
+	mov	r3, fp
 	bl	__printf_chk
-	mov	r2, fp
-	movw	r1, #:lower16:.LC4
+	vmov.32	r2, d9[0]
 	mov	r3, r5
-	movt	r1, #:upper16:.LC4
+	movw	r1, #:lower16:.LC4
 	mov	r0, #1
+	movt	r1, #:upper16:.LC4
+	str	r2, [sp, #4]
 	bl	__printf_chk
 	mov	r2, r6
 	movw	r1, #:lower16:.LC5
@@ -116,7 +116,7 @@ cordic_V_fixed_point:
 	cmp	r6, #0
 	ble	.L4
 	vmov.32	r2, d10[0]
-	add	r5, r9, r5
+	add	r9, r9, r5
 	vmov.32	r3, d9[1]
 	vmov.32	d8[0], r2
 	vmov.32	d8[1], r3
@@ -127,7 +127,7 @@ cordic_V_fixed_point:
 	movw	r1, #:lower16:.LC10
 	mov	r0, #1
 	movt	r1, #:upper16:.LC10
-	vmov.32	r9, d16[1]
+	vmov.32	r5, d16[1]
 	vmov.32	r10, d16[0]
 	vrev64.32	d16, d16
 	vadd.i32	d10, d16, d8
@@ -137,10 +137,10 @@ cordic_V_fixed_point:
 	movw	r1, #:lower16:.LC11
 	mov	r0, #1
 	movt	r1, #:upper16:.LC11
-	mov	r3, r9
+	mov	r3, r5
 	mov	r2, r10
 	bl	__printf_chk
-	mov	r2, r9
+	mov	r2, r5
 	mov	r3, r10
 	movw	r1, #:lower16:.LC12
 	mov	r0, #1
@@ -150,12 +150,12 @@ cordic_V_fixed_point:
 	movw	r1, #:lower16:.LC13
 	mov	r0, #1
 	movt	r1, #:upper16:.LC13
-	ldr	r9, [r4, #8]
+	ldr	r5, [r4, #8]
 	bl	__printf_chk
 	cmp	r6, #0
 	ble	.L6
 	vmov.32	r2, d10[0]
-	add	r5, r5, r9
+	add	r5, r9, r5
 	vmov.32	r3, d9[1]
 	vmov.32	d8[0], r2
 	vmov.32	d8[1], r3
@@ -398,102 +398,102 @@ cordic_V_fixed_point:
 	vldm	sp!, {d8-d10}
 	pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
 .L30:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r6
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r6
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L31
 .L28:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L29
 .L26:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L27
 .L24:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L25
 .L22:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L23
 .L20:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L21
 .L18:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L19
 .L16:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L17
 .L14:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L15
 .L12:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L13
 .L10:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L11
 .L8:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r5, r9
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L9
 .L6:
-	vmov.32	r2, d10[1]
-	sub	r5, r5, r9
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r5, r9, r5
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L7
 .L4:
-	vmov.32	r2, d10[1]
-	sub	r5, r9, r5
 	vmov.32	r3, d9[0]
-	vmov.32	d8[0], r2
-	vmov.32	d8[1], r3
+	sub	r9, r9, r5
+	vmov.32	r2, d10[1]
+	vmov.32	d8[0], r3
+	vmov.32	d8[1], r2
 	b	.L5
 .L2:
 	add	r3, sp, #4
