@@ -1,3 +1,4 @@
+#include <arm_neon.h>
 #include <stdio.h>
 #include <math.h>
 #include "cordic_V_fixed_point.c"
