@@ -12,16 +12,20 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY[0] = *x;
   XY[1] = *y;
   shift_XY = XY;
-  int64x2_t temp;
+  int32x2_t temp;
   z_temp = 0;
   z_t = z_table[0];
   __asm__ __volatile__ ( 
     "sasx_V %0, %1, %2"
-    : "=r" (temp[0])
+    : "=r" (temp)
     : "r" (XY[0]), "r" (shift_XY[1])
    );
+  XY[0] = temp[0] >> 16;
+  XY[1] = temp[0] & 0x0000FFFF;
 
-  printf("0:  FIRST spot, y_temp_1 = %lld\n", temp[0] );
+  printf("0:  FIRST spot, X; %d Y: %d \n", XY[0], XY[1] );
+  XY[0] = *x;
+  XY[1] = *y;
   (XY[1] > 0 )? (XY[0] = XY[0] + shift_XY[1], XY[1] = XY[1] - shift_XY[0] , z_temp+= z_t) : (XY[0] = XY[0] - shift_XY[1], XY[1] = XY[1] + shift_XY[0] , z_temp -= z_t);
   shift_XY = vshr_n_s32(XY, 1);
 

@@ -38,13 +38,25 @@ cordic_V_fixed_point:
 @ 0 "" 2
 	.arm
 	.syntax unified
+	vmov	d16, r2, r3  @ v2si
 	movw	r1, #:lower16:.LC0
 	mov	r0, #1
 	movt	r1, #:upper16:.LC0
+	vmov.32	r2, d16[0]
+	asr	r3, r2, #16
+	uxth	r2, r2
+	vmov.32	d8[0], r3
+	mov	r3, r2
+	vmov.32	d8[1], r2
+	vmov.32	r2, d8[0]
 	bl	__printf_chk
-	cmp	r9, #0
+	ldr	r3, [r6]
+	vld1.32	{d8[0]}, [r7]
+	cmp	r3, #0
+	vmov.32	d8[1], r3
+	vmov.32	r3, d8[0]
 	ble	.L2
-	add	r9, r10, r9
+	add	r9, r9, r3
 	vmov.32	d8[0], r9
 	vmov.32	r3, d8[1]
 	sub	r10, r3, r10
@@ -458,7 +470,7 @@ cordic_V_fixed_point:
 	vmov.32	d8[1], r3
 	b	.L5
 .L2:
-	sub	r9, r10, r9
+	sub	r9, r3, r9
 	rsb	r4, r4, #0
 	vmov.32	d8[0], r9
 	vmov.32	r3, d8[1]
@@ -470,8 +482,8 @@ cordic_V_fixed_point:
 	.section	.rodata.str1.4,"aMS",%progbits,1
 	.align	2
 .LC0:
-	.ascii	"0:  FIRST spot, y_temp_1 = %lld\012\000"
-	.space	3
+	.ascii	"0:  FIRST spot, X; %d Y: %d \012\000"
+	.space	2
 .LC1:
 	.ascii	"2:  FIRST spot, y_temp_1 = %d\012\000"
 	.space	1
