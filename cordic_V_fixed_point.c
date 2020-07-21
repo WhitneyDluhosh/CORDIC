@@ -7,17 +7,18 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   register  int  z_temp, z_t;
   int32x2_t XY;
   int32x2_t shift_XY;
-  int32x2_t addXY;
-  int32x2_t subXY;
+  int32x2_t ADDSUB = {1, -1};
+  int32x2_t SUBADD = {-1, 1};
   XY[0] = *x;
   XY[1] = *y;
   shift_XY = XY;
-  int32x2_t temp;
   z_temp = 0;
   z_t = z_table[0];
-
-  (XY[1] > 0 )? (XY[0] = XY[0] + shift_XY[1], XY[1] = XY[1] - shift_XY[0] , z_temp+= z_t) : (XY[0] = XY[0] - shift_XY[1], XY[1] = XY[1] + shift_XY[0] , z_temp -= z_t);
+  shift_XY = vrev64_s32(XY);
+  (XY[1] > 0 )? (XY = vadd_s32(XY, vmul_s32(shift_XY,ADDSUB)), z_temp+= z_t) : (XY = vadd_s32(XY, vmul_s32(shift_XY,SUBADD)), z_temp -= z_t);
+  printf("X: %d Y: %d \n",XY[0],XY[1]);
   shift_XY = vshr_n_s32(XY, 1);
+  shift_XY = vrev64_s32(XY);
 
   z_t = z_table[1];
   (XY[1] > 0 )? (XY[0] = XY[0] + shift_XY[1], XY[1] = XY[1] - shift_XY[0] , z_temp+= z_t) : (XY[0] = XY[0] - shift_XY[1], XY[1] = XY[1] + shift_XY[0] , z_temp -= z_t);
