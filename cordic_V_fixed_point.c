@@ -16,7 +16,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   z_temp = 0;
   z_t = z_table[0];
   __asm__ __volatile__ ( 
-    "sasx_V %0, %1, %2"
+    "sasx %0, %1, %2"
     : "=r" (temp)
     : "r" (XY[0]), "r" (shift_XY[1])
    );
