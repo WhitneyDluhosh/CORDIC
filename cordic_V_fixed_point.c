@@ -1,21 +1,22 @@
 #include <arm_neon.h>
 #include <stdio.h>
 
-#define OP(XY, shift_XY, shift, vt, vf, cmp, ADDSUB, SUBADD) {\
-  shift_XY = vshr_n_s32(XY, shift);\
-  shift_XY = vrev64_s32(shift_XY);\
-  vt = veor_s32(shift_XY, ADDSUB);\
-  vf = veor_s32(shift_XY, SUBADD);\
-  cmp = vcgt_s32(XY, ZERO);\
-  cmp = vdup_lane_u32(cmp, 1);\
-  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));\
-}
+// #define OP(XY, shift_XY, shift, vt, vf, cmp, ADDSUB, SUBADD) {\
+//   shift_XY = vshr_n_s32(XY, shift);\
+//   shift_XY = vrev64_s32(shift_XY);\
+//   vt = veor_s32(shift_XY, ADDSUB);\
+//   vf = veor_s32(shift_XY, SUBADD);\
+//   cmp = vcgt_s32(XY, ZERO);\
+//   cmp = vdup_lane_u32(cmp, 1);\
+//   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));\
+// }
 
 int z_table[15];
 // add to compile instruction to get rid of soft error: -mfloat-abi=hard and -mfpu=neon
 void cordic_V_fixed_point( int *x, int *y, int *z) {
   register  int  z_temp, z_t;
-  int32x2_t vt, vf, cmp; // Value true, Value false, Compare mask
+  int32x2_t vt, vf; // Value true, Value false
+  uint32x2_t cmp; //Compare mask
   int32x2_t XY = {*x, *y};
   int32x2_t shift_XY;
   int32x2_t ZERO = {0,0};
@@ -27,6 +28,118 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   z_temp = 0;
 
   shift_XY = vrev64_s32(XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 1);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 2);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 3);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 4);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 5);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 6);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 7);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 8);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 9);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 10);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 11);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 12);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 13);
+  shift_XY = vrev64_s32(shift_XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  
+  shift_XY = vshr_n_s32(XY, 14);
+  shift_XY = vrev64_s32(shift_XY);
   vt = veor_s32(shift_XY, ADDSUB);
   vf = veor_s32(shift_XY, SUBADD);
   cmp = vcgt_s32(XY, ZERO);
