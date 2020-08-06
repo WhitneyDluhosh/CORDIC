@@ -37,7 +37,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[1], 0};
+  zt[0] = z_table[1];
   shift_XY = vshr_n_s32(XY, 1);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -49,7 +49,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[2], 0};
+  zt[0] = z_table[2];
   shift_XY = vshr_n_s32(XY, 2);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -61,7 +61,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[3], 0};
+  zt[0] = z_table[3];
   shift_XY = vshr_n_s32(XY, 3);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -73,7 +73,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[4], 0};
+  zt[0] = z_table[4];
   shift_XY = vshr_n_s32(XY, 4);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -85,7 +85,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[5], 0};
+  zt[0] = z_table[5];
   shift_XY = vshr_n_s32(XY, 5);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -97,7 +97,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[6], 0};
+  zt[0] = z_table[6];
   shift_XY = vshr_n_s32(XY, 6);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -109,7 +109,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[7], 0};
+  zt[0] = z_table[7];
   shift_XY = vshr_n_s32(XY, 7);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -121,7 +121,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[8], 0};
+  zt[0] = z_table[8];
   shift_XY = vshr_n_s32(XY, 8);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -133,7 +133,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[9], 0};
+  zt[0] = z_table[9];
   shift_XY = vshr_n_s32(XY, 9);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -145,7 +145,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[10], 0};
+  zt[0] = z_table[10];
   shift_XY = vshr_n_s32(XY, 10);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -157,7 +157,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[11], 0};
+  zt[0] = z_table[11];
   shift_XY = vshr_n_s32(XY, 11);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -169,7 +169,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[12], 0};
+  zt[0] = z_table[12];
   shift_XY = vshr_n_s32(XY, 12);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -181,7 +181,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[13], 0};
+  zt[0] = z_table[13];
   shift_XY = vshr_n_s32(XY, 13);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
@@ -193,7 +193,7 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
   z_temp = vadd_s32(z_temp, vbsl_s32(cmp, add, sub));
   
-  zt = {z_table[14], 0};
+  zt[0] = z_table[14];
   shift_XY = vshr_n_s32(XY, 14);
   cmp = vcgt_s32(XY, ZERO);
   shift_XY = vrev64_s32(shift_XY);
