@@ -7,7 +7,7 @@
   vt = veor_s32(shift_XY, ADDSUB);\
   vf = veor_s32(shift_XY, SUBADD);\
   cmp = vcgt_s32(XY, ZERO);\
-  cmp = vdup_lane_u32(cmp, 1);\ // Only use Y's value
+  cmp = vdup_lane_u32(cmp, 1);\
   XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));\
 }
 
@@ -25,21 +25,28 @@ void cordic_V_fixed_point( int *x, int *y, int *z) {
   const int32x2_t SUBADD = {0xFFFFFFFE, 0x0};
   
   z_temp = 0;
-  OP(XY, shift_XY, 0, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 1, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 2, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 3, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 4, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 5, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 6, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 7, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 8, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 9, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 10, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 11, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 12, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 13, vt, vf, cmp, ADDSUB, SUBADD);
-  OP(XY, shift_XY, 14, vt, vf, cmp, ADDSUB, SUBADD);
+
+  shift_XY = vrev64_s32(XY);
+  vt = veor_s32(shift_XY, ADDSUB);
+  vf = veor_s32(shift_XY, SUBADD);
+  cmp = vcgt_s32(XY, ZERO);
+  cmp = vdup_lane_u32(cmp, 1);
+  XY = vadd_s32(XY, vbsl_s32(cmp, vt, vf));
+  // OP(XY, shift_XY, 0, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 1, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 2, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 3, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 4, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 5, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 6, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 7, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 8, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 9, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 10, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 11, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 12, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 13, vt, vf, cmp, ADDSUB, SUBADD);
+  // OP(XY, shift_XY, 14, vt, vf, cmp, ADDSUB, SUBADD);
 
   *x = XY[0];
   *y = XY[1];
