@@ -1,6 +1,21 @@
 Vectoring CORDIC:
 
 ORIGINAL VALUE, y_temp_1 =  24903 
+0: FIRST spot, y_temp_1 = 24903 
+1: SECOND spot, y_temp_1 = -2949 
+2: FIRST spot, y_temp_1 = 23428 
+3: FIRST spot, y_temp_1 = 9871 
+4: FIRST spot, y_temp_1 = 2361 
+5: SECOND spot, y_temp_1 = -1471 
+6: FIRST spot, y_temp_1 = 449 
+7: SECOND spot, y_temp_1 = -512 
+8: SECOND spot, y_temp_1 = -32 
+9: FIRST spot, y_temp_1 = 208 
+10: FIRST spot, y_temp_1 = 88 
+11: FIRST spot, y_temp_1 = 28 
+12: SECOND spot, y_temp_1 = -2 
+13: FIRST spot, y_temp_1 = 13 
+14: FIRST spot, y_temp_1 = 6 
 x_i_init = 27852	x_d_init = 0.849976
 y_i_init = 24903	y_d_init = 0.759979
 z_i_init = 23906	z_d_init = 0.729553 (rad)
