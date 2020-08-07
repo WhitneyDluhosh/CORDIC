@@ -1,0 +1,20 @@
+Multiply-subtract from accumulator
+Compare bitwise equal
+Compare signed greater than or equal
+Signed absolute difference and accumulate long
+Signed minimum/maximum
+Signed shift right and accumulate
+Multiply-add to accumulator
+Vector multiply subtract with scalar
+Multiply-subtract from accumulator
+Vector multiply by scalar
+Vector multiply accumulate with scalar
+Negate
+Load multiple 4-element structures to four registers
+Add across vector
+Reverse elements in 64-bit doublewords
+Dot product signed arithmetic
+Floating-point complex multiply accumulate
+Signed 8-bit integer matrix multiply-accumulate
+Dot product index form with signed and unsigned integers
+Load multiple 2-element structures to two registers
