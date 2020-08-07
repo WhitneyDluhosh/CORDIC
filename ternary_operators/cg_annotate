@@ -7,7 +7,7 @@ Data file:        cachegrind
 Events recorded:  Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw Bc Bcm Bi Bim
 Events shown:     Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw Bc Bcm Bi Bim
 Event sort order: Ir I1mr ILmr Dr D1mr DLmr Dw D1mw DLmw Bc Bcm Bi Bim
-Thresholds:       0.1 100 100 100 100 100 100 100 100 100 100 100 100
+Thresholds:       0 100 100 100 100 100 100 100 100 100 100 100 100
 Include dirs:     
 User annotated:   
 Auto-annotation:  off
@@ -69,4 +69,110 @@ Auto-annotation:  off
    326    3    3    102    4    1     8    0    0     75     6  18   1  ???:_IO_default_xsputn
    326    3    2     68    2    2    62    0    0     38     6   0   0  ???:_itoa_word
    250    3    1    100    0    0   100    0    0      0     0   0   0  ???:mempcpy
+   234   10    3     90    0    0    54    0    0     45     8   0   0  ???:_IO_file_write@@GLIBC_2.4
+   231    9    9     24    2    2    60    3    3     40    23   0   0  ???:_dl_init_paths
+   202   13   13     60    3    2    36    0    0     41    13   1   1  ???:_IO_cleanup
+   202    5    5    105    1    1     8    1    1     20    10   0   0  ???:strcspn
+   194    5    3     57    1    0    43    0    0     13     7   8   2  ???:_dl_add_to_namespace_list
+   192    2    2     54    4    0    78    4    4      6     0   6   2  ???:_dl_catch_exception
+   184    5    1     64    0    0    64    0    0     22     2   0   0  ???:__mpn_rshift
+   169    3    3     55    0    0     1    0    0     53    14   0   0  ???:_dl_next_ld_env_entry
+   168   16    2     84    2    1    56    0    0      7     0   0   0  ???:printf
+   168    5    4     91    7    1    45    0    0     23     3   6   6  ???:call_init.part.0
+   165   11   10     42    5    1    22    0    0     36    10   2   2  ???:__run_exit_handlers
+   162   15   15     50    4    3    24    3    2     17     5   2   2  ???:sysmalloc
+   161   15    3     49    0    0    49    1    1     14     0   0   0  ???:__mpn_lshift
+   160   12   12     54    8    2    28    0    0     30    16   0   0  ???:_IO_flush_all_lockp
+   156    6    5     52    2    2    32    0    0     28     8   0   0  ???:__cxa_finalize
+   136   14    6     18    3    2   126    3    2      7     6   0   0  ???:__sigsetjmp
+   135    6    2     90    1    1    54    0    0     18     0   0   0  ???:write
+   130    6    2     40    0    0    40    0    0     10     0   0   0  ???:calloc
+   126    3    3     35    0    0    70    1    0      7     3   0   0  ???:__mpn_extract_double
+   126    2    1     45    0    0    27    1    1     18     0   0   0  ???:mmap
+   115    7    6     34    9    4    16    3    2      7     3   0   0  ???:_init
+   115    4    2     40    7    7    40    0    0     10     2   0   0  ???:_dl_setup_hash
+   105    3    2     35    1    1    10    0    0     10     3   0   0  ???:_dl_protect_relro
+   100    8    8     31    6    2    15    0    0     18     6   1   1  ???:puts
+    94    5    4     24    2    2    13    0    0     11     4   0   0  ???:init_tls
+    90   14    3     36    0    0    24    0    0      6     2   0   0  ???:read_int
+    89    5    5     36    1    0    12    0    0      0     0   0   0  ???:verify
+    85    5    5     19    3    2     9    0    0     16     6   0   0  ???:_dl_discover_osversion
+    85    3    3     33    2    1    10    0    0     14     5   0   0  ???:_dl_init
+    85    3    1     40    0    0    25    0    0      0     0   0   0  ???:openaux
+    84    6    6     35    3    1    16    0    0     11     3   0   0  ???:_dl_allocate_tls_init
+    84    2    2      8    0    0    16    1    1     12     0   0   0  ???:__open64_nocancel
+    79    4    2     23    3    1     4    0    0     12    10   0   0  ???:_dl_debug_initialize
+    77    2    2      7    1    0     0    0    0      7     5   0   0  ???:__libc_alloca_cutoff
+    76    2    2     18    0    0    18    0    0     10     4   0   0  ???:_IO_do_write@@GLIBC_2.4
+    74    6    5     27    2    1     8    0    0      9     3   1   1  ???:_IO_file_doallocate
+    74    4    4     27    2    2    19    0    0     18     7   0   0  ???:__unregister_atfork
+    74    4    3     17    2    2    11    1    0      5     0   0   0  ???:brk
+    69    3    3     16    0    0     6    0    0     11     4   0   0  ???:_dl_check_all_versions
+    68    7    6     22    1    1    17    0    0      6     1   0   0  ???:_dl_determine_tlsoffset
+    68    6    4     29    3    1    14    0    0      6     1   2   2  ???:(below main)
+    67    6    4     28    5    3    12    0    0     13     7   0   0  ???:sbrk
+    65    4    4      9    2    0     4    0    0      7     1   0   0  ???:rindex
+    63    3    1     28    1    1     7    0    0      0     0   0   0  ???:__printf_fp
+    54    4    3     23    4    2     6    0    0     15     6   0   0  ???:_dl_find_dso_for_object
+    53    4    4     21    1    1    22    0    0      3     0   0   0  ???:tcgetattr
+    53    3    3     16    2    1    14    0    0     10     3   0   0  ???:__internal_atexit
+    52    6    4     14    1    0    10    0    0      4     1   0   0  ???:handle_ld_preload
+    51    3    3     15    0    0    12    0    0      6     2   0   0  ???:__libc_scratch_buffer_set_array_size
+    50    3    3     13    1    1     9    0    0     11     3   0   0  ???:tcache_init.part.3
+    48    4    2     36    0    0    36    1    1      6     0   0   0  ???:_dl_dst_count
+    48    3    1      8    0    0     8    0    0      8     5   0   0  ???:mprotect
+    45    5    5     12    1    1    16    0    0      5     1   1   1  ???:_IO_default_setbuf
+    45    3    3      5    0    0     5    2    2      5     0   0   0  ???:__fxstat64
+    45    3    1     35    0    0    25    0    0      0     0   5   5  ???:_dl_runtime_resolve
+    42    6    5     20    2    2    10    0    0      4     1   1   1  ???:_IO_padn
+    42    3    2     24    3    1     8    0    0      4     2   0   0  ???:_dl_vdso_vsym
+    39    5    5     21    2    1    14    0    0      5     2   0   0  ???:__mpn_mul
+    36    5    5     12    4    2     9    0    0      4     1   0   0  ???:__new_exitfn
+    36    1    1     12    0    0    12    0    0      3     0   0   0  ???:strdup
+    34    2    2     10    0    0     9    0    0      0     0   0   0  ???:main
+    32    3    3      5    1    1     7    1    1      3     2   0   0  ???:_dl_sysdep_read_whole_file
+    31    2    2      2    0    0     9    2    2      1     0   0   0  ???:__sigjmp_save
+    29    3    3     11    1    1    11    0    0      1     0   0   0  ???:do_preload
+    28    3    2      7    1    1     5    0    0      2     0   0   0  ???:_dl_allocate_tls_storage
+    28    1    1      4    0    0     4    0    0      4     0   0   0  ???:__GI___close_nocancel
+    24    6    1      6    1    0     6    0    0      0     0   0   0  ???:rtld_lock_default_unlock_recursive
+    24    3    0      6    2    1     6    0    0      0     0   0   0  ???:rtld_lock_default_lock_recursive
+    22    2    2     11    2    1     8    0    0      2     0   1   1  ???:__libc_csu_init
+    22    2    2     10    2    1     4    0    0      4     2   1   1  ???:_IO_doallocbuf
+    22    2    1     14    3    1     4    0    0      0     0   0   0  ???:__ctype_init
+    21    2    1     11    1    1     6    1    0      2     0   0   0  ???:__init_misc
+    21    1    1      3    0    0     3    0    0      3     0   0   0  ???:__read_nocancel
+    20    3    2     11    5    2     0    0    0      3     1   0   0  ???:check_stdfiles_vtables
+    19    2    2      8    0    0     7    0    0      0     0   0   0  ???:_dl_catch_error
+    18    3    0     18    1    0    12    0    0      3     3   0   0  ???:free
+    18    2    1      8    1    1     3    0    0      1     0   0   0  ???:isatty
+    17    2    2     12    2    1     8    0    0      1     0   0   0  ???:_dl_add_to_slotinfo
+    16    4    4      8    0    0     6    0    0      2     2   0   0  ???:_IO_file_sync@@GLIBC_2.4
+    16    1    1      8    2    0     9    0    0      1     1   0   0  ???:_IO_setb
+    15    2    1      5    0    0     5    0    0      0     0   0   0  ???:map_doit
+    14    2    2      3    0    0     8    0    0      1     0   0   0  ???:_IO_file_setbuf@@GLIBC_2.4
+    14    2    1      6    1    1     6    1    1      0     0   0   0  ???:allocate_dtv
+    13    1    1      2    1    0     2    0    0      1     1   0   0  ???:access
+    13    1    0      7    1    1     8    0    0      0     0   1   1  ???:_dl_receive_error
+    12    2    2      6    1    1     3    1    1      1     0   0   0  ???:_dl_next_tls_modid
+    12    1    1      5    1    1     3    0    0      0     0   0   0  ???:malloc_hook_ini
+    12    1    0      5    2    0     3    0    0      1     0   0   0  ???:_dl_unload_cache
+    11    2    1      5    1    1     2    0    0      1     0   0   0  ???:dso_name_valid_for_suid
+    10    2    2      6    0    0     6    0    0      1     0   0   0  ???:expand_dynamic_string_token
+    10    2    1      5    1    1     2    0    0      1     0   0   0  ???:version_check_doit
+    10    1    1      4    0    0     4    0    0      0     0   0   0  ???:__default_morecore
+     9    2    2     10    1    1     6    0    0      1     1   0   0  ???:__call_tls_dtors
+     8    1    1      1    1    1     0    0    0      1     0   0   0  ???:sqrt
+     7    1    1      3    1    1     0    0    0      1     0   0   0  ???:_dl_count_modids
+     6    1    1      1    1    0     2    0    0      0     0   0   0  ???:exit
+     6    1    1      1    0    0     1    1    1      1     1   0   0  ???:uname
+     6    1    1      1    0    0     1    0    0      1     1   0   0  ???:munmap
+     5    1    1      1    1    0     0    0    0      1     1   0   0  ???:memchr
+     4    1    1      1    0    0     0    0    0      0     0   0   0  ???:_IO_file_stat
+     4    1    1      0    0    0     1    0    0      0     0   0   0  ???:_Exit
+     3    1    1      1    1    1     0    0    0      0     0   0   0  ???:__cxa_atexit
+     2    2    1      0    0    0     0    0    0      0     0   0   0  ???:_dl_debug_state
+     2    1    1      0    0    0     0    0    0      0     0   0   0  ???:_setjmp
+     2    1    1      0    0    0     0    0    0      0     0   0   0  ???:__sqrt_finite
+     1    1    0      0    0    0     0    0    0      0     0   0   0  ???:_dl_sysdep_start_cleanup
 
